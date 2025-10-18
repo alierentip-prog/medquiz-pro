@@ -1,7 +1,51 @@
 <!doctype html>
-<html>
-  <body>
-    <h1>Merhaba, MedQuiz Pro!</h1>
-    <p>Bu test sayfası doğru yolda olduğumuzu gösteriyor 😎</p>
-  </body>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MedQuiz Pro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <span class="brand">MedQuiz Pro</span>
+    <div id="navBtns" style="display:none;">
+      <button id="btnUpload">Metin Yükle</button>
+      <button id="btnQuiz">Quiz</button>
+      <button id="btnReview">Yanlışlarım</button>
+    </div>
+  </nav>
+
+  <!-- Basit giriş (şimdilik lokal; Supabase’i birazdan ekleyeceğiz) -->
+  <section id="auth" class="card">
+    <h2>Giriş</h2>
+    <input id="username" placeholder="Kullanıcı adı" />
+    <input id="password" type="password" placeholder="Şifre" />
+    <div class="row">
+      <button id="btnLocalLogin">Giriş Yap</button>
+    </div>
+    <p class="muted">Not: Bu, geçici yerel giriş. Birkaç adım sonra gerçek bulut üyeliğe geçeceğiz.</p>
+  </section>
+
+  <main id="app" style="display:none;">
+    <section id="upload" class="card">
+      <h3>Metin / Slayt İçeriği</h3>
+      <textarea id="inputText" placeholder="Slayt metnini buraya yapıştır"></textarea>
+      <button id="btnGen">Soruları Oluştur</button>
+      <div id="genInfo" class="muted"></div>
+    </section>
+
+    <section id="quiz" class="card" style="display:none;">
+      <h3>Quiz</h3>
+      <div id="quizBox"></div>
+    </section>
+
+    <section id="review" class="card" style="display:none;">
+      <h3>Yanlışlarım (Aralıklı Tekrar)</h3>
+      <ul id="reviewList"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
 </html>
