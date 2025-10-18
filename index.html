@@ -5,47 +5,51 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MedQuiz Pro</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Supabase JS (gerekli) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Uygulama kodun -->
+  <script defer src="app.js"></script>
 </head>
 <body>
   <nav>
     <span class="brand">MedQuiz Pro</span>
-    <div id="navBtns" style="display:none;">
-      <button id="btnUpload">Metin Yükle</button>
-      <button id="btnQuiz">Quiz</button>
-      <button id="btnReview">Yanlışlarım</button>
+    <div id="authedActions" style="display:none;">
+      <button id="navUpload">Metin Yükle</button>
+      <button id="navQuiz">Quiz</button>
+      <button id="navReview">Yanlışlarım</button>
+      <button id="btnSignOut">Çıkış</button>
     </div>
   </nav>
 
-  <!-- Basit giriş (şimdilik lokal; Supabase’i birazdan ekleyeceğiz) -->
-  <section id="auth" class="card">
-    <h2>Giriş</h2>
-    <input id="username" placeholder="Kullanıcı adı" />
+  <!-- Gerçek (bulut) giriş -->
+  <section id="authSection" class="card">
+    <h2>Giriş / Kayıt</h2>
+    <input id="email" type="email" placeholder="E-posta" />
     <input id="password" type="password" placeholder="Şifre" />
     <div class="row">
-      <button id="btnLocalLogin">Giriş Yap</button>
+      <button id="btnSignUp">Kayıt Ol</button>
+      <button id="btnSignIn">Giriş Yap</button>
     </div>
-    <p class="muted">Not: Bu, geçici yerel giriş. Birkaç adım sonra gerçek bulut üyeliğe geçeceğiz.</p>
+    <p id="authMsg" class="muted"></p>
   </section>
 
   <main id="app" style="display:none;">
-    <section id="upload" class="card">
+    <section id="uploadSection" class="card">
       <h3>Metin / Slayt İçeriği</h3>
       <textarea id="inputText" placeholder="Slayt metnini buraya yapıştır"></textarea>
       <button id="btnGen">Soruları Oluştur</button>
       <div id="genInfo" class="muted"></div>
     </section>
 
-    <section id="quiz" class="card" style="display:none;">
+    <section id="quizSection" class="card" style="display:none;">
       <h3>Quiz</h3>
       <div id="quizBox"></div>
     </section>
 
-    <section id="review" class="card" style="display:none;">
+    <section id="reviewSection" class="card" style="display:none;">
       <h3>Yanlışlarım (Aralıklı Tekrar)</h3>
       <ul id="reviewList"></ul>
     </section>
   </main>
-
-  <script src="app.js"></script>
 </body>
 </html>
